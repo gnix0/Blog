@@ -75,3 +75,26 @@
   font-size: 13px;
   white-space: nowrap;
 }
+
+/* ── Mobile ──────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .postlist-container {
+    padding: 10px 12px;
+  }
+
+  .postlist-row {
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+    padding: 10px 6px;
+  }
+
+  .postlist-cursor,
+  .postlist-index,
+  .postlist-tags {
+    display: none;
+  }
+
+  .postlist-date {
+    font-size: 12px;
+  }
+}

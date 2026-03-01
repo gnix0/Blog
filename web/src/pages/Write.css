@@ -114,7 +114,17 @@
   overflow: auto !important;
 }
 
-.write-editor .w-md-editor-text-pre,
+/* Pre overlay: transparent background so textarea selection shows through;
+   the .w-md-editor container provides the background color. */
+.write-editor .w-md-editor-text-pre {
+  background: transparent !important;
+  color: var(--fg) !important;
+  font-family: var(--font) !important;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+}
+
+/* Preview pane needs its own background */
 .write-editor .wmde-markdown {
   background: var(--bg-alt) !important;
   color: var(--fg) !important;
@@ -122,13 +132,20 @@
   font-size: 15px !important;
 }
 
-/* Textarea must stay transparent so the pre overlay is visible */
+/* Textarea: transparent so pre overlay is visible; line-height must match pre */
 .write-editor .w-md-editor-text-input {
   background: transparent !important;
   -webkit-text-fill-color: transparent !important;
   caret-color: var(--fg) !important;
   font-family: var(--font) !important;
   font-size: 15px !important;
+  line-height: 1.6 !important;
+}
+
+/* Make selected text visible: restore fill color and show a distinct highlight */
+.write-editor .w-md-editor-text-input::selection {
+  background: rgba(112, 144, 160, 0.35);
+  -webkit-text-fill-color: var(--fg);
 }
 
 /* ── toolbar ─────────────────────────────────────────── */

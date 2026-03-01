@@ -147,3 +147,18 @@
   font-size: 0.9em;
   color: var(--green);
 }
+
+.reader-content pre {
+  overflow-x: auto;
+}
+
+/* ── Mobile ──────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .reader-container {
+    padding: 16px 12px 48px;
+  }
+
+  .reader-title {
+    font-size: 1.3em;
+  }
+}
