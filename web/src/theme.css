@@ -1,0 +1,87 @@
+/* Ashen.nvim-inspired color palette */
+:root {
+  --bg:        #171717;
+  --bg-alt:    #1f1f1f;
+  --bg-ui:     #111111;
+  --fg:        #c9c9c9;
+  --fg-dim:    #555555;
+  --fg-accent: #a0a0a0;
+  --cursor-bg: #2e2e2e;
+  --border:    #252525;
+  --green:     #7a9e7e;
+  --yellow:    #b8a070;
+  --blue:      #7090a0;
+  --red:       #a07070;
+
+  --font: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+  --content-width: 90ch;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+a {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+::selection {
+  background: var(--cursor-bg);
+}
+
+input,
+textarea,
+button {
+  font-family: var(--font);
+  font-size: 14px;
+  background: var(--bg-alt);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  outline: none;
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--fg-dim);
+}
+
+button {
+  cursor: pointer;
+  padding: 4px 12px;
+  border-color: var(--border);
+}
+
+button:hover {
+  background: var(--cursor-bg);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+}

@@ -1,0 +1,29 @@
+.statusbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 22px;
+  background: var(--bg-ui);
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  font-size: 12px;
+  color: var(--fg-dim);
+  z-index: 100;
+  user-select: none;
+}
+
+.statusbar-left {
+  color: var(--fg-accent);
+}
+
+.statusbar-center {
+  color: var(--fg-dim);
+}
+
+.statusbar-right {
+  color: var(--red);
+}

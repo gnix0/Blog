@@ -1,5 +1,25 @@
+# Secrets / local config
 .env
+.env.*
+!.env.example
 .air.toml
-go.mod
-go.sum
+
+# Build artifacts
 /bin
+
+# Frontend
+web/node_modules/
+web/dist/
+
+# Uploads (local dev)
+uploads/
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

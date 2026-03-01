@@ -1,0 +1,48 @@
+# Production compose — pulls pre-built images from Docker Hub.
+# Usage on the server:
+#   DOCKERHUB_USERNAME=youruser TAG=<git-sha> docker compose -f docker-compose.prod.yml up -d
+#
+# Required .env on the server (see .env.example):
+#   DB_ADDR=postgres://blog:<password>@postgres:5432/blog?sslmode=disable
+#   JWT_SECRET=<32+ random chars>
+#   UPLOADS_DIR=/uploads
+#   POSTGRES_USER=blog
+#   POSTGRES_PASSWORD=<password>
+#   POSTGRES_DB=blog
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-blog}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    image: ${DOCKERHUB_USERNAME}/blog-api:${TAG:-latest}
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    env_file: .env
+    volumes:
+      - uploads:/uploads
+
+  nginx:
+    image: ${DOCKERHUB_USERNAME}/blog-nginx:${TAG:-latest}
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - uploads:/uploads:ro
+    depends_on:
+      - api
+
+volumes:
+  postgres_data:
+  uploads:

@@ -1,0 +1,5 @@
+# Builds a self-contained Nginx image with the frontend already baked in.
+# Run `npm run build` in web/ before building this image (the CI workflow does this).
+FROM nginx:alpine
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY web/dist /usr/share/nginx/html

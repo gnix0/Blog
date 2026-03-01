@@ -1,0 +1,34 @@
+# Multi-stage build for Heroku deployment.
+# Produces a single image with the Go API binary + pre-built React frontend.
+# The Go API serves web/dist/ as a SPA and proxies nothing — no nginx needed.
+
+# ─── Stage 1: Build React frontend ───────────────────────────────────────────
+FROM node:20-alpine AS frontend
+WORKDIR /web
+COPY web/package.json web/package-lock.json ./
+RUN npm ci
+COPY web/ ./
+RUN npm run build
+
+# ─── Stage 2: Build Go binaries ──────────────────────────────────────────────
+FROM golang:1.25-alpine AS backend
+WORKDIR /app
+COPY go.mod go.sum ./
+RUN go mod download
+COPY . .
+RUN CGO_ENABLED=0 GOOS=linux go build -o bin/api ./cmd/api
+RUN CGO_ENABLED=0 GOOS=linux go build -o bin/migrate ./cmd/migrate
+
+# ─── Stage 3: Final image ────────────────────────────────────────────────────
+FROM alpine:3.21
+RUN apk add --no-cache ca-certificates
+WORKDIR /app
+COPY --from=backend /app/bin/api ./api
+COPY --from=backend /app/bin/migrate ./migrate
+COPY --from=backend /app/cmd/migrate/migrations ./cmd/migrate/migrations
+COPY --from=frontend /web/dist ./web/dist
+RUN adduser -D -u 1001 appuser && chown -R appuser:appuser /app
+USER appuser
+# Heroku sets PORT dynamically; the app reads it at startup.
+EXPOSE 8080
+CMD ["./api"]

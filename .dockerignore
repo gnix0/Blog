@@ -1,0 +1,28 @@
+# Version control
+.git
+.gitignore
+
+# Secrets
+.env
+.env.*
+
+# Dev tools
+.air.toml
+.vscode/
+.idea/
+
+# Build artifacts (rebuilt inside Docker)
+bin/
+web/node_modules/
+
+# Docs / meta
+*.md
+CLAUDE.md
+.github/
+
+# OS noise
+.DS_Store
+Thumbs.db
+
+# Local uploads (not part of the image)
+uploads/

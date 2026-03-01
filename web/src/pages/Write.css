@@ -1,0 +1,313 @@
+/* ── top-level layout ────────────────────────────────── */
+.write-layout {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding-bottom: 22px; /* clear fixed statusbar */
+}
+
+.write-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+/* ── editor column ───────────────────────────────────── */
+.write-container {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  padding: 12px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.write-meta-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.write-title {
+  flex: 2;
+  padding: 6px 10px;
+  font-size: 1.1em;
+  color: var(--yellow);
+}
+
+.write-title::placeholder {
+  color: var(--fg-dim);
+}
+
+.write-tags {
+  flex: 1;
+  padding: 6px 10px;
+}
+
+.write-tags::placeholder {
+  color: var(--fg-dim);
+}
+
+.write-tag-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.write-tag-pill {
+  color: var(--green);
+  font-size: 12px;
+  background: var(--bg-alt);
+  padding: 2px 8px;
+  border: 1px solid var(--border);
+}
+
+/* ── MDEditor ────────────────────────────────────────── */
+.write-editor {
+  flex: 1;
+  min-height: 0;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.write-editor .w-md-editor {
+  flex: 1 !important;
+  min-height: 0 !important;
+  height: 100% !important;
+  background: var(--bg-alt) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: var(--fg) !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.write-editor .w-md-editor-toolbar {
+  background: var(--bg-ui) !important;
+  border-bottom: 1px solid var(--border) !important;
+  flex-shrink: 0 !important;
+}
+
+.write-editor .w-md-editor-toolbar li > button {
+  color: var(--fg-dim) !important;
+}
+
+.write-editor .w-md-editor-toolbar li > button:hover {
+  background: var(--cursor-bg) !important;
+  color: var(--fg) !important;
+}
+
+.write-editor .w-md-editor-content {
+  flex: 1 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+
+.write-editor .w-md-editor-input,
+.write-editor .w-md-editor-preview {
+  height: 100% !important;
+  overflow: auto !important;
+}
+
+.write-editor .w-md-editor-text-pre,
+.write-editor .wmde-markdown {
+  background: var(--bg-alt) !important;
+  color: var(--fg) !important;
+  font-family: var(--font) !important;
+  font-size: 15px !important;
+}
+
+/* Textarea must stay transparent so the pre overlay is visible */
+.write-editor .w-md-editor-text-input {
+  background: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  caret-color: var(--fg) !important;
+  font-family: var(--font) !important;
+  font-size: 15px !important;
+}
+
+/* ── toolbar ─────────────────────────────────────────── */
+.write-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+
+.write-toolbar-right {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+}
+
+.write-btn {
+  color: var(--fg-dim);
+  background: none;
+  border: 1px solid var(--border);
+  padding: 4px 10px;
+  font-size: 13px;
+}
+
+.write-btn:hover {
+  color: var(--fg);
+  background: var(--cursor-bg);
+}
+
+.write-btn-delete {
+  color: var(--red);
+  border-color: var(--red);
+}
+
+.write-btn-delete:hover {
+  color: var(--red);
+  background: rgba(160, 112, 112, 0.12);
+}
+
+.write-btn-preview {
+  color: var(--blue);
+}
+
+.write-btn-publish {
+  color: var(--green);
+}
+
+.write-btn-publish:disabled {
+  color: var(--fg-dim);
+  cursor: not-allowed;
+}
+
+.write-error {
+  color: var(--red);
+  font-size: 12px;
+}
+
+/* ── sidebar ─────────────────────────────────────────── */
+.write-sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  border-left: 1px solid var(--border);
+  background: var(--bg-ui);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.write-sidebar-header {
+  padding: 10px 12px;
+  color: var(--yellow);
+  font-size: 12px;
+  font-weight: bold;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.write-sidebar-header:hover {
+  color: var(--fg);
+  background: var(--cursor-bg);
+}
+
+.write-sidebar-row {
+  padding: 9px 12px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.write-sidebar-row:hover,
+.write-sidebar-row.active {
+  background: var(--cursor-bg);
+}
+
+.write-sidebar-title {
+  color: var(--fg);
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.write-sidebar-row.active .write-sidebar-title {
+  color: var(--yellow);
+}
+
+.write-sidebar-date {
+  color: var(--fg-dim);
+  font-size: 11px;
+}
+
+/* ── delete confirmation modal ───────────────────────── */
+.delete-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+.delete-modal {
+  background: var(--bg-ui);
+  border: 1px solid var(--border);
+  padding: 28px 36px;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.delete-modal-question {
+  color: var(--fg-dim);
+  font-size: 13px;
+}
+
+.delete-modal-title {
+  color: var(--fg);
+  font-size: 14px;
+  word-break: break-word;
+  margin-bottom: 12px;
+}
+
+.delete-modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.delete-modal-cancel {
+  color: var(--fg-dim);
+  background: none;
+  border: 1px solid var(--border);
+  padding: 4px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.delete-modal-cancel:hover {
+  color: var(--fg);
+  background: var(--cursor-bg);
+}
+
+.delete-modal-confirm {
+  color: var(--red);
+  background: none;
+  border: 1px solid var(--red);
+  padding: 4px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.delete-modal-confirm:hover {
+  background: rgba(160, 112, 112, 0.12);
+}

@@ -9,10 +9,16 @@ import (
 
 type Storage struct {
 	Posts interface {
-		Create(context.Context, post *Post) error
+		Create(context.Context, *Post) error
+		GetByID(context.Context, int64) (*Post, error)
+		List(context.Context) ([]Post, error)
+		Update(context.Context, *Post) error
+		Delete(context.Context, int64) error
 	}
 	Users interface {
-		Create(context.Context, user *User) error
+		Create(context.Context, *User) error
+		GetByEmail(context.Context, string) (*User, error)
+		GetByUsername(context.Context, string) (*User, error)
 	}
 }
 
