@@ -1,17 +1,17 @@
-/* Ashen.nvim-inspired color palette */
+/* Kanagawa Wave color palette */
 :root {
-  --bg:        #171717;
-  --bg-alt:    #1f1f1f;
-  --bg-ui:     #111111;
-  --fg:        #c9c9c9;
-  --fg-dim:    #555555;
-  --fg-accent: #a0a0a0;
-  --cursor-bg: #2e2e2e;
-  --border:    #252525;
-  --green:     #7a9e7e;
-  --yellow:    #b8a070;
-  --blue:      #7090a0;
-  --red:       #a07070;
+  --bg:        #1F1F28;
+  --bg-alt:    #2A2A37;
+  --bg-ui:     #16161D;
+  --fg:        #DCD7BA;
+  --fg-dim:    #727169;
+  --fg-accent: #C8C093;
+  --cursor-bg: #363646;
+  --border:    #363646;
+  --green:     #98BB6C;
+  --yellow:    #C0A36E;
+  --blue:      #7E9CD8;
+  --red:       #E46876;
 
   --font: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
   --content-width: 90ch;
