@@ -7,7 +7,7 @@ export default function Navbar() {
       <Link to="/" className="navbar-title">gustavo's blog/</Link>
       <div className="navbar-links">
         <a
-          href="https://github.com/devgustavoa"
+          href="https://github.com/gnix0"
           target="_blank"
           rel="noopener noreferrer"
           className="navbar-icon"
